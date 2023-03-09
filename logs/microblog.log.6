@@ -1,51 +1,10 @@
-2023-02-28 11:32:13,774 ERROR: Exception on / [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
-Traceback (most recent call last):
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1788, in dispatch_request
-    self.raise_routing_exception(req)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1770, in raise_routing_exception
-    raise request.routing_exception  # type: ignore
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\ctx.py", line 351, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-  File "D:\Esthenos\Learn\venv\lib\site-packages\werkzeug\routing\map.py", line 624, in match
-    raise NotFound() from None
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
-    response = self.full_dispatch_request()
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1669, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1609, in handle_http_exception
-    return self.ensure_sync(handler)(e)
-  File "D:\Esthenos\Learn\app\errors.py", line 6, in not_found_error
-    return render_template('404.html'), 404
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(app, template, context)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 130, in _render
-    rv = template.render(context)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "D:\Esthenos\Learn\app\templates\404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "D:\Esthenos\Learn\app\templates\base.html", line 12, in top-level template code
-    <a href="{{ url_for('index') }}">Home</a>
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2034, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2023, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-  File "D:\Esthenos\Learn\venv\lib\site-packages\werkzeug\routing\map.py", line 917, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'index'. Did you mean 'login' instead?
-2023-02-28 11:34:51,067 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
-2023-02-28 11:35:37,229 ERROR: Exception on /user/hd [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
+2023-02-27 16:08:04,781 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-27 16:08:15,809 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-27 17:00:25,456 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-27 17:08:46,051 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 11:06:18,387 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 11:06:27,023 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 11:07:24,153 ERROR: Exception on /user/hd [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -57,7 +16,7 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "D:\Esthenos\Learn\app\routes.py", line 36, in user
+  File "D:\Esthenos\Learn\app\routes.py", line 31, in user
     return render_template('user.html', user=user, posts=posts)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(app, template, context)
@@ -76,7 +35,7 @@ Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
     return getattr(obj, attribute)
 jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-02-28 11:36:51,868 ERROR: Exception on /user/hd [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
+2023-02-28 11:08:35,769 ERROR: Exception on /user/ab [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,7 +47,7 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "D:\Esthenos\Learn\app\routes.py", line 36, in user
+  File "D:\Esthenos\Learn\app\routes.py", line 31, in user
     return render_template('user.html', user=user, posts=posts)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(app, template, context)
@@ -107,8 +66,8 @@ Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
     return getattr(obj, attribute)
 jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-02-28 11:52:37,212 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
-2023-02-28 11:53:44,765 ERROR: Exception on /user/hd [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
+2023-02-28 11:10:23,114 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 11:10:47,209 ERROR: Exception on /user/ab [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -120,7 +79,7 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "D:\Esthenos\Learn\app\routes.py", line 32, in user
+  File "D:\Esthenos\Learn\app\routes.py", line 31, in user
     return render_template('user.html', user=user, posts=posts)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(app, template, context)
@@ -139,4 +98,36 @@ Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
     return getattr(obj, attribute)
 jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-02-28 11:58:06,525 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 11:13:28,693 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 11:13:36,865 ERROR: Exception on / [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
+Traceback (most recent call last):
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\Esthenos\Learn\app\routes.py", line 22, in index
+    form = PostForm()
+NameError: name 'PostForm' is not defined
+2023-02-28 11:13:46,396 ERROR: Exception on /index [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
+Traceback (most recent call last):
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\Esthenos\Learn\app\routes.py", line 22, in index
+    form = PostForm()
+NameError: name 'PostForm' is not defined
+2023-02-28 11:15:15,613 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 11:15:36,573 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]

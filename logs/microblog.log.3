@@ -1,30 +1,17 @@
-2023-02-28 11:32:13,774 ERROR: Exception on / [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
-Traceback (most recent call last):
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1788, in dispatch_request
-    self.raise_routing_exception(req)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1770, in raise_routing_exception
-    raise request.routing_exception  # type: ignore
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\ctx.py", line 351, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-  File "D:\Esthenos\Learn\venv\lib\site-packages\werkzeug\routing\map.py", line 624, in match
-    raise NotFound() from None
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-
-During handling of the above exception, another exception occurred:
-
+2023-02-28 11:58:23,441 ERROR: Exception on /user/ab [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1669, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1609, in handle_http_exception
-    return self.ensure_sync(handler)(e)
-  File "D:\Esthenos\Learn\app\errors.py", line 6, in not_found_error
-    return render_template('404.html'), 404
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "D:\Esthenos\Learn\app\routes.py", line 34, in user
+    return render_template('user.html', user=user, posts=posts, form=form)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(app, template, context)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 130, in _render
@@ -33,19 +20,20 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "D:\Esthenos\Learn\app\templates\404.html", line 1, in top-level template code
+  File "D:\Esthenos\Learn\app\templates\user.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "D:\Esthenos\Learn\app\templates\base.html", line 12, in top-level template code
-    <a href="{{ url_for('index') }}">Home</a>
+  File "D:\Esthenos\Learn\app\templates\base.html", line 40, in top-level template code
+    {% block content %}{% endblock %}
+  File "D:\Esthenos\Learn\app\templates\user.html", line 24, in block 'content'
+    <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2034, in url_for
     return self.handle_url_build_error(error, endpoint, values)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2023, in url_for
     rv = url_adapter.build(  # type: ignore[union-attr]
   File "D:\Esthenos\Learn\venv\lib\site-packages\werkzeug\routing\map.py", line 917, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'index'. Did you mean 'login' instead?
-2023-02-28 11:34:51,067 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
-2023-02-28 11:35:37,229 ERROR: Exception on /user/hd [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'unfollow' with values ['username']. Did you mean 'follow' instead?
+2023-02-28 11:58:43,224 ERROR: Exception on /user/ab [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -57,8 +45,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "D:\Esthenos\Learn\app\routes.py", line 36, in user
-    return render_template('user.html', user=user, posts=posts)
+  File "D:\Esthenos\Learn\app\routes.py", line 34, in user
+    return render_template('user.html', user=user, posts=posts, form=form)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(app, template, context)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 130, in _render
@@ -71,12 +59,20 @@ Traceback (most recent call last):
     {% extends "base.html" %}
   File "D:\Esthenos\Learn\app\templates\base.html", line 40, in top-level template code
     {% block content %}{% endblock %}
-  File "D:\Esthenos\Learn\app\templates\user.html", line 18, in block 'content'
-    {{ form.hidden_tag() }}
-  File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-02-28 11:36:51,868 ERROR: Exception on /user/hd [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
+  File "D:\Esthenos\Learn\app\templates\user.html", line 24, in block 'content'
+    <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2034, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2023, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "D:\Esthenos\Learn\venv\lib\site-packages\werkzeug\routing\map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'unfollow' with values ['username']. Did you mean 'follow' instead?
+2023-02-28 12:04:36,309 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 13:12:06,992 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+2023-02-28 19:22:40,627 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:45]
+2023-02-28 19:24:27,131 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:45]
+2023-02-28 19:24:34,276 ERROR: Exception on /login [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
 Traceback (most recent call last):
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
     response = self.full_dispatch_request()
@@ -86,10 +82,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "D:\Esthenos\Learn\app\routes.py", line 36, in user
-    return render_template('user.html', user=user, posts=posts)
+  File "D:\Esthenos\Learn\app\routes.py", line 84, in login
+    return render_template('login.html', title='Sign In', form=form)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(app, template, context)
   File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 130, in _render
@@ -98,45 +92,18 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "D:\Esthenos\Learn\app\templates\user.html", line 1, in top-level template code
+  File "D:\Esthenos\Learn\app\templates\login.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "D:\Esthenos\Learn\app\templates\base.html", line 40, in top-level template code
+  File "D:\Esthenos\Learn\app\templates\base.html", line 41, in top-level template code
     {% block content %}{% endblock %}
-  File "D:\Esthenos\Learn\app\templates\user.html", line 18, in block 'content'
-    {{ form.hidden_tag() }}
-  File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-02-28 11:52:37,212 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
-2023-02-28 11:53:44,765 ERROR: Exception on /user/hd [GET] [in D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py:1744]
-Traceback (most recent call last):
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
-    response = self.full_dispatch_request()
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1825, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "D:\Esthenos\Learn\app\routes.py", line 32, in user
-    return render_template('user.html', user=user, posts=posts)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(app, template, context)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\templating.py", line 130, in _render
-    rv = template.render(context)
-  File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "D:\Esthenos\Learn\app\templates\user.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "D:\Esthenos\Learn\app\templates\base.html", line 40, in top-level template code
-    {% block content %}{% endblock %}
-  File "D:\Esthenos\Learn\app\templates\user.html", line 18, in block 'content'
-    {{ form.hidden_tag() }}
-  File "D:\Esthenos\Learn\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-02-28 11:58:06,525 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:44]
+  File "D:\Esthenos\Learn\app\templates\login.html", line 24, in block 'content'
+    <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2034, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "D:\Esthenos\Learn\venv\lib\site-packages\flask\app.py", line 2023, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "D:\Esthenos\Learn\venv\lib\site-packages\werkzeug\routing\map.py", line 917, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password_request'. Did you mean 'reset_password' instead?
+2023-02-28 19:29:12,686 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:45]
+2023-02-28 19:29:21,657 INFO: Microblog startup [in D:\Esthenos\Learn\app\__init__.py:45]
